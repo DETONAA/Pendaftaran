@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pendaftaran Eskul Sekolah</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #e0e0e0;
+      color: #222;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #444;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 500;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #666;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+
+    .success-message {
+      margin-top: 20px;
+      color: green;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Pendaftaran Ekstrakurikuler Sekolah</h1>
+    <p>Silakan isi formulir berikut untuk mendaftar kegiatan eskul</p>
+  </header>
+
+  <main>
+    <form id="eskulForm">
+      <h2>Formulir Pendaftaran</h2>
+      <label for="nama">Nama Lengkap</label>
+      <input type="text" id="nama" name="nama" required>
+
+      <label for="kelas">Kelas</label>
+      <input type="text" id="kelas" name="kelas" required>
+
+      <label for="nohp">No. HP</label>
+      <input type="tel" id="nohp" name="nohp" required>
+
+      <label for="eskul">Pilih Ekstrakurikuler</label>
+      <select id="eskul" name="eskul" required>
+        <option value="">-- Pilih Eskul --</option>
+        <option value="Volly">Volly</option>
+        <option value="Pramuka">Pramuka</option>
+        <option value="Paskibra">Paskibra</option>
+        <option value="Rohis">Rohis</option>
+        <option value="English Club">English Club</option>
+      </select>
+
+      <button type="submit">Daftar</button>
+      <div class="success-message" id="successMessage"></div>
+    </form>
+  </main>
+
+  <script>
+    const form = document.getElementById('eskulForm');
+    const successMessage = document.getElementById('successMessage');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const data = {
+        nama: form.nama.value,
+        kelas: form.kelas.value,
+        nohp: form.nohp.value,
+        eskul: form.eskul.value
+      };
+
+      // Kirim ke Google Sheets / Supabase di sini
+      console.log('Data pendaftaran:', data);
+
+      form.reset();
+      successMessage.textContent = "Pendaftaran berhasil dikirim!";
+    });
+    
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+</body>
+</html>
