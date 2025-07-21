@@ -113,29 +113,6 @@
       <div class="success-message" id="successMessage"></div>
     </form>
   </main>
-
-  <script>
-    const form = document.getElementById('eskulForm');
-    const successMessage = document.getElementById('successMessage');
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      const data = {
-        nama: form.nama.value,
-        kelas: form.kelas.value,
-        nohp: form.nohp.value,
-        eskul: form.eskul.value
-      };
-
-      // Kirim ke Google Sheets / Supabase di sini
-      console.log('Data pendaftaran:', data);
-
-      form.reset();
-      successMessage.textContent = "Pendaftaran berhasil dikirim!";
-    });
-    
-  </script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
   <script>
